@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <link   href="../css/sign.css"
+            rel="stylesheet"
+            media="all"
+            th:href="@{../css/sign.css}"
+            type="text/css">
+
+    <link   href="../css/general.css"
+            rel="stylesheet"
+            th:href="@{../css/general.css}"
+            type="text/css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Travel agency TMI</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__logo">TMI</div>
+        </div>
+    </header>
+
+<div class="login">
+    <div class="container">
+        <div class="login__back">
+            <div class="login__form">
+                <p>Добро пожаловать!</p>
+                <form action="/login" method="post">
+                    <input class="login__input"type="text" id="login" placeholder="ЛОГИН">
+                    <input class="login__input" type="password" id="password" placeholder="ПАРОЛЬ">
+                    <button class="login_button" type="submit" value="send_logrequest">ВХОД</button>
+                </form>
+                <button class="login_button" onclick="window.location.href = 'signup.html'" >ЗАРЕГИСТРИРОВАТЬСЯ</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    inp = document.querySelector('.login__input');
+    login = document.querySelector('#login');
+    password = document.querySelector('#password');
+    btn = document.querySelector('.login_button');
+    btn.setAttribute('disabled', true)
+    inp.oninput = function(){
+        if (login.value.length < 5 && password.value.length < 10){
+            btn.setAttribute('disabled', true);
+        }else{
+                btn.removeAttribute('disabled');
+        }
+    }
+</script>
+</body>

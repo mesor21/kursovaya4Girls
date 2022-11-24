@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/adminmenu.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Travel agency TMI</title>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">TMI</div>
+            <div class="nav">Администратор</div>
+        </div>
+    </div>
+</header>
+
+<div class="menu">
+    <div class="container">
+        <div class="menu__block">
+            <div class="menu__hotel">
+                   <p>Список отелей</p>
+                   <form  class="form__hotel" action="${pageContext.request.contextPath}/admin" method="post">
+                    <input class="login__input" type="text" placeholder="Название" name="name" value="${hotel.name}">
+                    <input class="login__input" type="text" placeholder="Адрес" name="address" value="${hotel.address}" >
+                    <input class="login__input" type="number" placeholder="Кол-во номеров" name="numbercount" value="${hotel.numbercount}">
+                    <br>
+                    <button class="upload_button" type="submit" value="upload">ДОБАВИТЬ</button>
+                    </form>
+
+                    <form class="form__hotel"  action="${pageContext.request.contextPath}/admin" method="post">
+                    <input class="login__input" type="text" placeholder="id Отеля" name="hotelid" value="${hotel.id}">
+                    <br>
+                    <button class="delete_button" type="submit" value="delete">УДАЛИТЬ</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="info__block">
+             <div class="info__number">
+                 <table>
+                        <thead>
+                        <th>ID</th>
+                        <th>Название</th>
+                        <th>Адрес</th>
+                        <th>Кол-во номеров</th>
+                        </thead>
+                        <c:forEach items="${allUsers}" var="user">
+                          <tr>
+                            <td>${hotel.id}</td>
+                            <td>${hotel.name}</td>
+                            <td>${hotel.address}</td>
+                            <td>${hotel.numbercount}; </td>
+                          </tr>
+                        </c:forEach>
+                  </table>
+             </div>
+        </div>
+    </div>
+</body>

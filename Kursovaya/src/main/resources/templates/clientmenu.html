@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/adminmenu.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Travel agency TMI</title>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">TMI</div>
+            <div class="nav">Клиент</div>
+        </div>
+    </div>
+</header>
+
+<div class="menu">
+    <div class="container">
+        <div class="menu__block">
+            <div class="menu__hotel">
+                   <p>Список отелей</p>
+                   <form  class="form__hotel" action="${pageContext.request.contextPath}/client" method="post">
+                   <small>Выберите отель из списка</small>
+                    <select class="login__input" id="appointment">
+                        <option method="get">Название отеля</option>
+                    </select>
+                    <small>Выберите номер из списка</small>
+                    <select class="login__input" id="appointment">
+                        <option method="get">Номер</option>
+                    </select>
+                    <br>
+                    <button class="upload_button" type="submit" method="post">ЗАБРОНИРОВАТЬ</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="info__block">
+             <div class="info__number">
+                 <table>
+                    <thead>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Номер</th>
+                    <th>Состояние</th>
+                    </thead>
+                    <c:forEach items="${allUsers}" var="user">
+                      <tr>
+                        <td>${room.id}</td>
+                        <td>${room.name}</td>
+                        <td>${room.number}</td>
+                        <td>${room.condition};</td>
+                      </tr>
+                    </c:forEach>
+              </table>
+             </div>
+        </div>
+    </div>
+</body>

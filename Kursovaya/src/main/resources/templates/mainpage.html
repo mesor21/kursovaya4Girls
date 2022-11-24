@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <link   rel="stylesheet"
+            media="all"
+            href="../css/mainpage.css"
+            th:href="@{/css/mainpage.css}"
+            type="text/css">
+
+    <link   rel="stylesheet"
+            href="../css/general.css"
+            th:href="@{/css/general.css}"
+            type="text/css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Travel agency TMI</title>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">TMI</div>
+            <nav class="nav">
+                <a class="nav__link" href="/signup">Зарегистрироваться</a>
+                <a class="nav__link" href="/signin">Войти в аккаунт</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+     <div class="intro__inner">
+        <h1 class="intro__title">Искусство путешествий TMI</h1>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet"
+    media="all"
+    href="../css/sign.css"
+    th:href="@{/css/sign.css}"
+    type="text/css">
+
+    <link rel="stylesheet"
+    href="../css/general.css"
+    th:href="@{/css/general.css}"
+    type="text/css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Travel agency TMI</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__logo">TMI</div>
+        </div>
+    </header>
+
+<div class="login">
+    <div class="container">
+        <div class="login__back">
+            <div class="login__form">
+               <p>Добро пожаловать!</p>
+               <form action="http://localhost:8080" method="post">
+                    <input class="login__input"type="text" placeholder="ЛОГИН" id="login">
+                    <input class="login__input" type="text" placeholder="ФИО" id="fullName">
+                    <input class="login__input" type="password" placeholder="ПАРОЛЬ" id="password">
+                    <select class="login__input" id="appointment">
+                        <option value="admin">Администратор</option>
+                        <option value="client">Клиент</option>
+                        <option value="dispatcher">Диспетчер</option>
+                    </select>
+                   <button class="login_button" type="submit" value="send_regrequest" >ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+    inp = document.querySelector('.login__input');
+    login = document.querySelector('#login');
+    fio = document.querySelector('#fio');
+    password = document.querySelector('#password');
+    repeat_password = document.querySelector('#repeat_password');
+    btn = document.querySelector('.login_button');
+    btn.setAttribute('disabled', true)
+    inp.oninput = function(){
+        if (login.value.length < 5 && password.value.length < 10){
+            btn.setAttribute('disabled', true);
+        }else{
+                btn.removeAttribute('disabled');
+        }
+    }
+</script>
+
+</div>
+</body>

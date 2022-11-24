@@ -1,16 +1,13 @@
+
 package com.travelAgency.Kursovaya.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.util.Set;
+import javax.persistence.*;
 
 @Entity
 public class UserSystem {
     private @Id @GeneratedValue Long id;
-    @ManyToMany(mappedBy = "userSystem")
-    private Set<Role> roles;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Role roles;
     private String fullName;
     private String login;
     private String password;
@@ -20,7 +17,7 @@ public class UserSystem {
         return id;
     }
 
-    public Set<Role> getRoles() {
+    public Role getRoles() {
         return roles;
     }
 
@@ -36,7 +33,7 @@ public class UserSystem {
         return password;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Role roles) {
         this.roles = roles;
     }
 
@@ -52,3 +49,4 @@ public class UserSystem {
         this.password = password;
     }
 }
+

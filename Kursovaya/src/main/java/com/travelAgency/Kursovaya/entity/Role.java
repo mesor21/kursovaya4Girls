@@ -7,7 +7,7 @@ import java.util.Set;
 public class Role {
     private @Id @GeneratedValue Long id;
     private String role;
-    @ManyToMany(mappedBy = "roles")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "roles")
     private Set<UserSystem>  userSystems;
 
     public Role() {
@@ -38,3 +38,4 @@ public class Role {
         return userSystems;
     }
 }
+

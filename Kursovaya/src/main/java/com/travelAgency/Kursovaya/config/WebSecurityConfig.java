@@ -1,46 +1,40 @@
 package com.travelAgency.Kursovaya.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private DataSource dataSource;
     @Autowired
     UserDetailsService userSecice;
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    protected void configure(HttpSecurity httpSecurity) throws Exception{
+    @Override
+    public void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
                 .csrf()
                     .disable()
                 .authorizeRequests()
-                    .antMatchers("/login","registration").not().fullyAuthenticated()
+                    .antMatchers("/","/signin").permitAll()
+                    .antMatchers("/signup").not().fullyAuthenticated()
                     .antMatchers("/admin/**").hasRole("admin")
                     .antMatchers("/user/**").hasRole("user")
                     .antMatchers("/hotel/**").hasRole("hotel")
-                    .antMatchers("/","/resources/**").permitAll()
-                .anyRequest().authenticated()
+                    .anyRequest().authenticated()
                 .and()
                     .formLogin()
-                    .loginPage("/login")
-                    .permitAll()
+                        .loginPage("/signin")
+                        .permitAll()
                 .and()
                     .logout()
-                    .permitAll()
-                    .logoutSuccessUrl("/");
-    }
-    @Autowired
-    protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userSecice).passwordEncoder(bCryptPasswordEncoder());
+                        .permitAll()
+                        .logoutSuccessUrl("/");
     }
 }
-

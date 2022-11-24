@@ -1,7 +1,12 @@
+
 package com.travelAgency.Kursovaya.repository;
 
-import com.travelAgency.Kursovaya.entity.Room;
+import com.travelAgency.Kursovaya.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface RoleRepository extends JpaRepository<Room, Long> {
+@Repository
+public interface RoleRepository extends JpaRepository<Role, Long> {
+    Role findByRole(String role);
 }
+

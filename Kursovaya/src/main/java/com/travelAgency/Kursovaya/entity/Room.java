@@ -1,3 +1,4 @@
+
 package com.travelAgency.Kursovaya.entity;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ public class Room {
     private Hotel hotel;
     private @Id @GeneratedValue Long id;
     private int Number;
-
+    private boolean condition;
     public Room(){}
 }
+
