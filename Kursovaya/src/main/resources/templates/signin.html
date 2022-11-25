@@ -107,12 +107,12 @@ body{
         <div class="login__back">
             <div class="login__form">
                 <p>Добро пожаловать!</p>
-                <form action="http://localhost:8080" method="post">
-                    <input class="login__input"type="text" id="login" placeholder="ЛОГИН">
-                    <input class="login__input" type="password" id="password" placeholder="ПАРОЛЬ">
-                    <button class="login_button" type="submit" value="send_logrequest">ВХОД</button>
+                <form method="POST" action="/login" >
+                    <input class="login__input" type="text"     id="login"      name="login" placeholder="ЛОГИН">
+                    <input class="login__input" type="password" id="password"   name="password" placeholder="ПАРОЛЬ">
+                    <button class="login_button" type="submit">ВХОД</button>
                 </form>
-                <button class="login_button" onclick="window.location.href = 'signup.html'" >ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                <button class="login_button" onclick="window.location.href = '/signup'" >ЗАРЕГИСТРИРОВАТЬСЯ</button>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@ body{
     btn = document.querySelector('.login_button');
     btn.setAttribute('disabled', true)
     inp.oninput = function(){
-        if (login.value.length < 5 && password.value.length < 10){
+        if (login.value.length < 3 && password.value.length < 10){
             btn.setAttribute('disabled', true);
         }else{
                 btn.removeAttribute('disabled');

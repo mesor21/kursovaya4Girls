@@ -107,11 +107,11 @@ body{
         <div class="login__back">
             <div class="login__form">
                <p>Добро пожаловать!</p>
-               <form action="http://localhost:8080" method="post">
-                    <input class="login__input"type="text" placeholder="ЛОГИН" id="login">
-                    <input class="login__input" type="text" placeholder="ФИО" id="fullName">
-                    <input class="login__input" type="password" placeholder="ПАРОЛЬ" id="password">
-                    <select class="login__input" id="appointment">
+               <form action="/signup" method="post">
+                    <input class="login__input" type="text"     placeholder="ЛОГИН"     id="login"      path="login">
+                    <input class="login__input" type="text"     placeholder="ФИО"       id="fullName"   path="fullName">
+                    <input class="login__input" type="password" placeholder="ПАРОЛЬ"    id="password"   path="password">
+                    <select class="login__input"    id="appointment" path="role">
                         <option value="admin">Администратор</option>
                         <option value="client">Клиент</option>
                         <option value="dispatcher">Диспетчер</option>
@@ -124,6 +124,7 @@ body{
 
 <script>
     inp = document.querySelector('.login__input');
+    inp = document.querySelector('.login__input');
     login = document.querySelector('#login');
     fio = document.querySelector('#fio');
     password = document.querySelector('#password');
@@ -131,7 +132,7 @@ body{
     btn = document.querySelector('.login_button');
     btn.setAttribute('disabled', true)
     inp.oninput = function(){
-        if (login.value.length < 5 && password.value.length < 10){
+        if (login.value.length < 3 && password.value.length < 10){
             btn.setAttribute('disabled', true);
         }else{
                 btn.removeAttribute('disabled');
