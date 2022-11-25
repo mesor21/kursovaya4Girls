@@ -2,18 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-
-    <link   rel="stylesheet"
-            media="all"
-            href="../css/mainpage.css"
-            th:href="@{/css/mainpage.css}"
-            type="text/css">
-
-    <link   rel="stylesheet"
-            href="../css/general.css"
-            th:href="@{/css/general.css}"
-            type="text/css">
-
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +10,124 @@
 
 <body>
 
+<style>
+body{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    line-height: 1.5;
+    color: #2b293e;
+    background: url("https://images.adsttc.com/media/images/5f06/234e/b357/655d/4600/0284/large_jpg/Kaunas-V-Plaza-Urban-Design-Architecture-Corner-Building-4364.jpg?1594237754") center no-repeat;
+    background-attachment:fixed;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.header{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: #fff;
+    opacity: 0.8;
+}
+.header__logo{
+    font-size: 40px;
+    font-weight: 700;
+    color: #000;
+    float: left;
+}
+.login_button{
+    margin-top: 15px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 70%;
+    height: 40px;
+    border-color: #2b293e;
+    color: #2b293e;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    -webkit-transition: color 150ms ease-in-out;
+    transition: color 150ms ease-in-out;
+}
+.login_button:hover {
+    color: #3e4157;
+}
+.nav{
+    font-size: 42%;
+    font-weight: 700;
+    text-transform: uppercase;
+    align-items: center;
+    padding-left: 70%;
+    padding-top: 2%;
+}
+.nav__link{
+    visibility: top;
+    margin: 0 2%;
+    position:relative;
+    font-weight: 700;
+    color: #000;
+    text-decoration: none;
+    transition: color .1s linear;
+}
+.nav__link:after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #2b293e;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    transition: opacity .2s linear;
+}
+.nav__link:hover{
+    color: #2b293e;
+}
+.nav__link:hover:after{
+    opacity: 1;
+}
+
+.intro__inner{
+    padding-top: 10%;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.intro__title{
+    background: linear-gradient(#2b293e,#000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+}
+</style>
+
 <header class="header">
     <div class="container">
         <div class="header__inner">
             <div class="header__logo">TMI</div>
             <nav class="nav">
-                <a class="nav__link" href="/signup">Зарегистрироваться</a>
-                <a class="nav__link" href="/signin">Войти в аккаунт</a>
+                <a class="nav__link" href="../html/signup.html">Зарегистрироваться</a>
+                <a class="nav__link" href="../html/signin.html">Войти в аккаунт</a>
             </nav>
         </div>
     </div>
