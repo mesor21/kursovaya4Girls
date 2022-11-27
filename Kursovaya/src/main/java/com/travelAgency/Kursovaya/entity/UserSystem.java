@@ -12,6 +12,15 @@ public class UserSystem {
     private String login;
     private String password;
 
+    public UserSystem() {
+    }
+
+    public UserSystem(Role roles, String fullName, String login, String password) {
+        this.roles = roles;
+        this.fullName = fullName;
+        this.login = login;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;
@@ -48,5 +57,7 @@ public class UserSystem {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
 
