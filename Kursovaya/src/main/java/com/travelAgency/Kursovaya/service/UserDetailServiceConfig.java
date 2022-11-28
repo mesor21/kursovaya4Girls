@@ -1,6 +1,5 @@
 package com.travelAgency.Kursovaya.service;
 
-import com.sun.istack.NotNull;
 import com.travelAgency.Kursovaya.entity.UserSystem;
 import com.travelAgency.Kursovaya.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +19,16 @@ public class UserDetailServiceConfig implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(@NotNull String login) throws UsernameNotFoundException {
-        if(userRepository.findByLogin(login)==null){
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        System.out.println(login);
+        UserSystem userSystem=userRepository.findByUsername(login);
+        if(userSystem==null){
             throw new UsernameNotFoundException("User not authorized.");
         }
-        UserSystem userSystem=userRepository.findByLogin(login);
         GrantedAuthority authority = new SimpleGrantedAuthority(userSystem.getRoles().getRole());
-        UserDetails userDetails = (UserDetails) new User( userSystem.getLogin(), userSystem.getPassword(), Arrays.asList(authority));
+        User userDetails = new User(userSystem.getLogin(),userSystem.getPassword(), Arrays.asList(authority));
+
+        System.out.println(userDetails.getUsername() +":"+userDetails.getPassword()+". Role"+userDetails.getAuthorities());
         return userDetails;
     }
 }

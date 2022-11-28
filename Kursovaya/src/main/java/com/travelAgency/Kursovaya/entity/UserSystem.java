@@ -9,7 +9,7 @@ public class UserSystem {
     @ManyToOne(fetch = FetchType.EAGER)
     private Role roles;
     private String fullName;
-    private String login;
+    private String username;
     private String password;
 
     public UserSystem() {
@@ -18,7 +18,7 @@ public class UserSystem {
     public UserSystem(Role roles, String fullName, String login, String password) {
         this.roles = roles;
         this.fullName = fullName;
-        this.login = login;
+        this.username = login;
         this.password = password;
     }
 
@@ -35,7 +35,7 @@ public class UserSystem {
     }
 
     public String getLogin() {
-        return login;
+        return username;
     }
 
     public String getPassword() {
@@ -51,7 +51,7 @@ public class UserSystem {
     }
 
     public void setLogin(String login) {
-        this.login = login;
+        this.username = login;
     }
 
     public void setPassword(String password) {
