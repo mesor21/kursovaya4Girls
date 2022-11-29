@@ -1,20 +1,17 @@
 package com.travelAgency.Kursovaya.service;
 
 import com.travelAgency.Kursovaya.entity.UserSystem;
-import com.travelAgency.Kursovaya.repository.RoleRepository;
 import com.travelAgency.Kursovaya.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserService{
     @Autowired
     UserRepository userRepository;
-
-    @Autowired
-    RoleRepository roleRepository;
 
     public UserSystem findUserById(Long userId) {
         Optional<UserSystem> userFromDb = userRepository.findById(userId);
@@ -64,15 +61,12 @@ public class UserService{
             }
         }
     }
-    public void ListAllRole(){
-        int len= roleRepository.findAll().size();
-        for(int i = 0; i<len; i++){
-            System.out.println(roleRepository.findAll().get(i).getRole());
-        }
-
-    }
     public void deleteByLogin(String login){
         UserSystem userSystem = userRepository.findByUsername(login);
         userRepository.deleteById(userSystem.getId());
     }
+    public List<UserSystem> getAllUsers(){
+        return userRepository.findAll();
+    }
+
 }

@@ -11,5 +11,11 @@ public class Room {
     private int Number;
     private boolean condition;
     public Room(){}
+
+    public Room(Hotel hotel, int number, boolean condition) {
+        this.hotel = hotel;
+        Number = number;
+        this.condition = condition;
+    }
 }
 

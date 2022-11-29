@@ -37,7 +37,6 @@ public class Login {
     @PostMapping("/data")
     public String add(@RequestParam(value = "login",required = false)String login, @RequestParam(value = "fullName",required = false)String fullName,@RequestParam(value = "password",required = false)String password,@RequestParam(value = "role",required = false)String role){
         userService.ListAllUsers();
-        userService.DeleteAllUsers(true);
         return "redirect:/data";
     }
 }
