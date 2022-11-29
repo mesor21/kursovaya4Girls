@@ -21,15 +21,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
-                .csrf()
-                    .disable()
+                .csrf().disable()
+                .httpBasic()
+                .and()
                 .authorizeRequests()
-                    .antMatchers("/","/signin","/login").permitAll()
-                    .antMatchers("/signup").not().fullyAuthenticated()
-                    .antMatchers("/admin/**").hasRole("admin")
-                    .antMatchers("/client/**").hasRole("client")
-                    .antMatchers("/dispatcher/**").hasRole("dispatcher")
-                    .anyRequest().authenticated()
+                    .antMatchers("/","/signin","/data").permitAll()
+                    .antMatchers("/client/**").hasAuthority("CLIENT")
+                    .antMatchers("/dispatcher/**").hasAuthority("DISPATCHER")
+                    .antMatchers("/admin/**").hasAuthority("ADMIN")
+                    .antMatchers("/signup").not().authenticated()
                 .and()
                     .formLogin()
                         .loginPage("/signin")
@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout()
                         .permitAll()
-                        .logoutSuccessUrl("/");
+                        .logoutSuccessUrl("/signin");
     }
 
     @Autowired
@@ -47,4 +47,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userSecice)
                 .passwordEncoder(passwordEncoder);
     }
+
 }

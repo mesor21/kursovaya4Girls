@@ -25,8 +25,8 @@ public class UserDetailServiceConfig implements UserDetailsService {
         if(userSystem==null){
             throw new UsernameNotFoundException("User not authorized.");
         }
-        GrantedAuthority authority = new SimpleGrantedAuthority(userSystem.getRoles().getRole());
-        User userDetails = new User(userSystem.getLogin(),userSystem.getPassword(), Arrays.asList(authority));
+        GrantedAuthority authority = new SimpleGrantedAuthority(userSystem.getRoles());
+        UserDetails  userDetails = new User(userSystem.getLogin(),userSystem.getPassword(), Arrays.asList(authority));
 
         System.out.println(userDetails.getUsername() +":"+userDetails.getPassword()+". Role"+userDetails.getAuthorities());
         return userDetails;

@@ -1,6 +1,5 @@
 package com.travelAgency.Kursovaya.service;
 
-import com.travelAgency.Kursovaya.entity.Role;
 import com.travelAgency.Kursovaya.entity.UserSystem;
 import com.travelAgency.Kursovaya.repository.RoleRepository;
 import com.travelAgency.Kursovaya.repository.UserRepository;
@@ -13,6 +12,7 @@ import java.util.Optional;
 public class UserService{
     @Autowired
     UserRepository userRepository;
+
     @Autowired
     RoleRepository roleRepository;
 
@@ -46,9 +46,6 @@ public class UserService{
         }
         return false;
     }
-    public Role findRole(String roleName){
-        return roleRepository.findByRole(roleName);
-    }
 
     public UserSystem findByLogin(String login){
         return userRepository.findByUsername(login);
@@ -61,8 +58,10 @@ public class UserService{
     }
     public void DeleteAllUsers(Boolean uShure){
         if(uShure){
-            UserSystem x= userRepository.findByUsername("mesor");
-            userRepository.deleteById(x.getId());
+            int len= userRepository.findAll().size();
+            for(int i = 0; i<len; i++){
+                userRepository.deleteById(userRepository.findAll().get(i).getId());
+            }
         }
     }
     public void ListAllRole(){
