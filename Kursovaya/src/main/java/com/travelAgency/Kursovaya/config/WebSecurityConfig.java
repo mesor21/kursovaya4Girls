@@ -17,7 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
     @Autowired
-    UserDetailServiceConfig userSecice;
+    UserDetailServiceConfig userService;
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         auth
-                .userDetailsService(userSecice)
+                .userDetailsService(userService)
                 .passwordEncoder(passwordEncoder);
     }
 

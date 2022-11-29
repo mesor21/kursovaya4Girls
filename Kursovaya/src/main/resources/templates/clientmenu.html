@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -183,16 +183,12 @@ table{
                     <th>ID</th>
                     <th>Название</th>
                     <th>Номер</th>
-                    <th>Состояние</th>
                     </thead>
-                    <c:forEach items="${allUsers}" var="user">
-                      <tr>
-                        <td>${room.id}</td>
-                        <td>${room.name}</td>
-                        <td>${room.number}</td>
-                        <td>${room.condition};</td>
-                      </tr>
-                    </c:forEach>
+                    <tr th:each="UserSystem: ${allUsers}">
+                        <td>th:text="${UserSystem.getID}"</td>
+                        <td>th:text="${UserSystem.getName}"</td>
+                        <td>th:text="${UserSystem.getNumber}"</td>
+                    <tr>
               </table>
              </div>
         </div>

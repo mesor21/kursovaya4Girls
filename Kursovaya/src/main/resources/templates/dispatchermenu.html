@@ -189,16 +189,12 @@ table{
                     <th>ID</th>
                     <th>Название</th>
                     <th>Номер</th>
-                    <th>Состояние</th>
                     </thead>
-                    <c:forEach items="${allUsers}" var="user">
-                      <tr>
-                        <td>${room.id}</td>
-                        <td>${room.name}</td>
-                        <td>${room.number}</td>
-                        <td>${room.condition};</td>
-                      </tr>
-                    </c:forEach>
+                    <tr th:each="UserSystem: ${allUsers}">
+                        <td>th:text="${UserSystem.getID}"</td>
+                        <td>th:text="${UserSystem.getName}"</td>
+                        <td>th:text="${UserSystem.getNumber}"</td>
+                    <tr>
               </table>
              </div>
         </div>
